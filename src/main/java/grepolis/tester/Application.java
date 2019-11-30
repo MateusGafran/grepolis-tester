@@ -14,14 +14,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.UUID;
+
 public class Application {
 
     public static final String APPLICATION_NAME = "Grepolis Tester";
     public static final String FAREWELL = "Execution ended";
     public static final String SITE = "http://grepolis.com";
-    public static final String USERNAME = "xuhujagi@royalweb.email";
+    public static final String USERNAME = "segidej862@imailto.net";
     public static final String PASSWORD = "123mudar";
-    public static final String PLAYER_NAME = "nightowl";
+    public static final String PLAYER_NAME = "Super Tester";
 
     protected Logger log;
 
@@ -30,7 +32,7 @@ public class Application {
     }
 
     public void execute() {
-        this.log.info(APPLICATION_NAME);
+//        this.log.info(APPLICATION_NAME);
 
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -52,12 +54,19 @@ public class Application {
         log.info("Iron: " + gamePage.getResourceIron().getText());
         log.info("Population: " + gamePage.getPopulation().getText());
 
+        String newName = UUID.randomUUID().toString();
+        log.info("Change Town Name to: " + newName);
+        gamePage.changeTownName(newName);
+
+        log.info("Open and Close the Senate");
+        gamePage.openCloseSenate();
+
         gamePage.goToStrategicMap();
         gamePage.goToIsland();
         gamePage.goToCity();
 
         log.info(FAREWELL);
-//        driver.close();
+        driver.close();
     }
 
     public boolean login(WebDriver driver, String username, String password) {
