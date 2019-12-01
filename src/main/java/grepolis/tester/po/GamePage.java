@@ -63,13 +63,20 @@ public class GamePage extends BasePage {
         }
     }
 
-    public void changeTownName(String newName) {
-        Actions action = new Actions(this.driver);
-        action.doubleClick(this.townName).perform();
-        WebElement changeInput = driver.findElement(By.xpath("/html/body/input"));
-        changeInput.clear();
-        changeInput.sendKeys(newName);
-        changeInput.sendKeys(Keys.RETURN);
+    public void closePopUp(){
+        WebElement fechar = driver.findElement(By.className("close_all"));
+        fechar.click();
+    }
+
+    public void createSoldier() {
+        WebElement quartel = driver.findElement(By.id("building_main_area_barracks"));
+        quartel.click();
+
+        WebElement criarSoldado = driver.findElement(By.id("unit_order_count"));
+        criarSoldado.click();
+
+        WebElement fechar = driver.findElement(By.cssSelector("body > div.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.ui-resizable.js-window-main-container > div.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix > a.ui-dialog-titlebar-close.ui-corner-all"));
+        fechar.click();
     }
 
     public void openCloseSenate() {

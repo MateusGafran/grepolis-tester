@@ -21,9 +21,9 @@ public class Application {
     public static final String APPLICATION_NAME = "Grepolis Tester";
     public static final String FAREWELL = "Execution ended";
     public static final String SITE = "http://grepolis.com";
-    public static final String USERNAME = "segidej862@imailto.net";
-    public static final String PASSWORD = "123mudar";
-    public static final String PLAYER_NAME = "Super Tester";
+    public static final String USERNAME = "mattester@hotmail.com";
+    public static final String PASSWORD = "test321";
+    public static final String PLAYER_NAME = "Mat Tester";
 
     protected Logger log;
 
@@ -54,9 +54,11 @@ public class Application {
         log.info("Iron: " + gamePage.getResourceIron().getText());
         log.info("Population: " + gamePage.getPopulation().getText());
 
-        String newName = UUID.randomUUID().toString();
-        log.info("Change Town Name to: " + newName);
-        gamePage.changeTownName(newName);
+        log.info("Closing popup");
+        gamePage.closePopUp();
+
+        log.info("Create soldiers");
+        gamePage.createSoldier();
 
         log.info("Open and Close the Senate");
         gamePage.openCloseSenate();
